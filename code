@@ -1,0 +1,29 @@
+import math, random as rd
+import matplotlib.pyplot as plt
+
+radio = 1
+
+fig, ax = plt.subplots(figsize=(10,10))
+circle=plt.Circle((0,0),radio, edgecolor="r",lw=2, facecolor="none")
+square=plt.Rectangle((-1*radio,-1*radio),2*radio,2*radio, lw=2, edgecolor="b", facecolor="none")
+ax.add_patch(circle)
+ax.add_patch(square)
+ax.set_ylim([-1.5,1.5])
+ax.set_ylim([-1.5,1.5])
+plt.grid(color="silver", linestyle="--", linewidth=0.7, alpha=0.5)
+
+adentro = 0
+total = 4000
+
+for i in range(0,total):
+    x,y = rd.random()*2-1,rd.random()*2-1
+    if math.sqrt(x**2 + y**2) < 1.0:
+        ax.scatter(x, y, s=3, alpha=0.5, c="r")
+        adentro += 1
+    else:
+        ax.scatter(x, y, s=3, alpha=1, c="b")
+        
+pi = 4*adentro/total
+
+plt.show()
+print('El valor estimado de Pi es',pi)
